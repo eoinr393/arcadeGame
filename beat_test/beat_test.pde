@@ -11,9 +11,10 @@ float eRadius, eRadius1, eRadius2, kickSize, snareSize, hatSize;
 
 void setup()
 {
-   size(500,500,P3D);  
+   size(700,700,P3D);  
    //set up the player controller
    setUpPlayerControllers();
+   PlatformInit();
    minim = new Minim(this);
    song = minim.loadFile("Crypt of the NecroDancer Alpha OST - Zone 3 Level 1 Cold(New).mp3");
    song.play();
@@ -45,6 +46,10 @@ void draw()
      player.update();
      player.display();
    }
-   
+   for(Platform platform:platforms)
+   {
+     platform.update();
+     platform.display();
+   }
    beatDetect();
 }

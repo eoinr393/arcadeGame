@@ -54,7 +54,8 @@ void setUpPlayerControllers()
             , playerXML);
     int x = (i + 1) * gap;
     p.pos.x = x;
-    p.pos.y = 300;
+    p.pos.y = height - 25;
    players.add(p);         
   }
 }
+

@@ -10,6 +10,7 @@ class Player
   char button2;
   int index;
   color colour;
+  boolean keyUp, keyDown, keyLeft, keyRight;
     
   Player()
   {
@@ -46,21 +47,44 @@ class Player
   
   void update()
   {
-    if (checkKey(up))
+    if ((checkKey(up)) && keyUp)
     {
-      pos.y -= 1;
+      pos.y -= 10;
+      keyUp = !keyUp;
     }
-    if (checkKey(down))
+    if(!checkKey(up))
     {
-      pos.y += 1;
+       keyUp = true; 
     }
-    if (checkKey(left))
+    
+    if ((checkKey(down)) && keyDown)
     {
-      pos.x -= 1;
-    }    
-    if (checkKey(right))
+      pos.y += 10;
+      keyDown = !keyDown;
+    }
+    if(!checkKey(down))
     {
-      pos.x += 1;
+       keyDown = true; 
+    }
+    
+    if ((checkKey(left)) && keyLeft)
+    {
+      pos.x -= 10;
+      keyLeft = !keyLeft;
+    }
+    if(!checkKey(left))
+    {
+       keyLeft = true; 
+    }
+    
+    if ((checkKey(right)) && keyRight)
+    {
+      pos.x += 10;
+      keyRight = !keyRight;
+    }
+    if(!checkKey(right))
+    {
+       keyRight = true; 
     }
     if (checkKey(start))
     {
@@ -79,7 +103,10 @@ class Player
   void display()
   {    
     stroke(colour);
-    fill(colour);    
-    rect(pos.x, pos.y, 20, 20);
+    noFill(); 
+    pushMatrix();
+    translate(pos.x, pos.y, 0);   
+    box(20);
+    popMatrix();
   }  
 }

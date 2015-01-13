@@ -49,7 +49,7 @@ class Player
   {
     if ((checkKey(up)) && keyUp)
     {
-      pos.y -= 10;
+      pos.y -= 20;
       keyUp = !keyUp;
     }
     if(!checkKey(up))
@@ -59,7 +59,7 @@ class Player
     
     if ((checkKey(down)) && keyDown)
     {
-      pos.y += 10;
+      pos.y += 20;
       keyDown = !keyDown;
     }
     if(!checkKey(down))
@@ -69,7 +69,7 @@ class Player
     
     if ((checkKey(left)) && keyLeft)
     {
-      pos.x -= 10;
+      pos.x -= 20;
       keyLeft = !keyLeft;
     }
     if(!checkKey(left))
@@ -79,7 +79,7 @@ class Player
     
     if ((checkKey(right)) && keyRight)
     {
-      pos.x += 10;
+      pos.x += 20;
       keyRight = !keyRight;
     }
     if(!checkKey(right))

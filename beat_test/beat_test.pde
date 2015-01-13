@@ -51,5 +51,10 @@ void draw()
      platform.update();
      platform.display();
    }
+   for(Block block:blocks)
+   {
+      block.update();
+      block.display(); 
+   }
    beatDetect();
 }

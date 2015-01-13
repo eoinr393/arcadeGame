@@ -1,5 +1,6 @@
-ArrayList<Platform> platforms = new ArrayList<Platform>();
+Platform platforms[] = new Platform[4];
 float moveSpeed = 1;
+int platNum;
 
 class Platform
 {
@@ -7,10 +8,11 @@ class Platform
    int index;
    //int side;
    float len;
+   boolean displayed = false;
    
    Platform()
    {
-     pos = new PVector(height/2, width/2);
+     pos = new PVector(height/2, width/2,-100);
      len = int(random(200,500));
    }    
    
@@ -22,7 +24,19 @@ class Platform
    
    void update()
    {
-       moveSpeed += 1;
+       moveSpeed += 0.01;
+       pos.z += moveSpeed;
+       
+       //see if its displayed or not
+       if(pos.z - len < -(len/2))
+       {
+          displayed = true; 
+          print(displayed, "\n", pos.z ,"\n" );
+       }
+       else
+       {
+          displayed = false; 
+       }
    }
    
    void display()
@@ -30,7 +44,7 @@ class Platform
       stroke(255);
       noFill();
       pushMatrix();
-      translate(pos.x,pos.y,moveSpeed);
+      translate(pos.x,pos.y,pos.z);
       box(200, 20, len);
       popMatrix();
    }
@@ -38,15 +52,16 @@ class Platform
 }
 
 void PlatformInit()
-{
-  int platNum = 1;  
-
-  for(int i =0; i < platNum; i++)
+{  
+  
+  for(int i =0; i < 4; i++)
   {
-    Platform pl = new Platform(i);
-    pl.pos.x = width/2;
-    pl.pos.y = height - 50;
-    pl.len = 10000;
-    platforms.add(pl);
+    platforms[i] = new Platform();
+    
+    platforms[i].pos.x = width/2;
+    platforms[i].pos.y = height - 50;
+    platforms[i].pos.z = -100;
+    platforms[i].len = 10000;
+    
   } 
  }

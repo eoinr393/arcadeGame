@@ -29,16 +29,20 @@ void beatDetect()
    {
       kickSize = 32;
       eRadius = 80;
+      blockInit();
    } 
    if(beat.isOnset())
    {
       snareSize = 32;
       eRadius1 = 80;
+      blockInit();
+
    } 
    if(beat.isHat())
    {
       hatSize = 32;
       eRadius2 = 80;
+      blockInit();
    } 
    
    kickSize = constrain(kickSize * 0.95, 16, 32);

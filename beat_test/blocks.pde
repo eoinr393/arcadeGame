@@ -5,13 +5,13 @@ class Block
   PVector pos;
   //int index;
   int platform;
-  float sizeX = 20;
-  float sizeY = 20;
+  float sizeX = (platforms[0].pWidth / 4) - 5;
+  float sizeY = (platforms[0].pWidth / 4) - 5;
   //boolean hit;
    
   Block()
   {
-    pos = new PVector(width/2,height/2, -500);  
+    pos = new PVector(0,0, -500);  
   } 
   
   Block(int platform)
@@ -47,14 +47,14 @@ void blockInit()
           
           int row = int(random(1,5));
           
-          bl.pos.x = platforms[0].pos.x + row * bl.sizeX;
+          bl.pos.x = (platforms[0].pos.x - (platforms[0].pWidth / 2)) + row * 200/4;;
           bl.pos.y = platforms[0].pos.y + bl.sizeY;
           
           if(i != 0)
           {
              float rot = PI/2 * i;
-             float s = degrees(sin(rot));//get the sin in degrees
-             float c = degrees(cos(rot));//get the cos in degrees
+             float s = sin(rot);//get the sin
+             float c = cos(rot);//get the cos
              
              //take the rotation point from the point to rotate so
              //its now rotating around the origin
@@ -70,9 +70,9 @@ void blockInit()
              bl.pos.y = Y1 + height/2;
              
              bl.pos.z = -1000;//set z
+             print("block", i , "created");
           }
           blocks.add(bl);  
-          print("block created");
       }
     }
  }

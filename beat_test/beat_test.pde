@@ -12,9 +12,10 @@ float eRadius, eRadius1, eRadius2, kickSize, snareSize, hatSize;
 void setup()
 {
    size(700,700,P3D);  
-   //set up the player controller
-   setUpPlayerControllers();
+   //perform setups
    PlatformInit();
+   setUpPlayerControllers();
+   //load songs
    minim = new Minim(this);
    song = minim.loadFile("Crypt of the NecroDancer Alpha OST - Zone 3 Level 1 Cold(New).mp3");
    song.play();
@@ -22,6 +23,7 @@ void setup()
   // expects buggest the lingth of song's buffer size
   // and samples captured at songs sample rate
   beat = new BeatDetect(song.bufferSize(),song.sampleRate());
+  
   //set the sensitivity to 300 milliseconds 
   //after a beat has been detected the algorithm will wait for 300 miliseconds
   //before allowing another beat to be reported. You can use this to dampen the 

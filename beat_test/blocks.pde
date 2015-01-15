@@ -43,12 +43,12 @@ void blockInit()
     {
       if(platforms[i].displayed == true)
       {
-          Block bl = new Block(i);
+          Block Bl = new Block(i);
           
           int row = int(random(1,5));
           
-          bl.pos.x = (platforms[0].pos.x - (platforms[0].pWidth / 2)) + row * 200/4;;
-          bl.pos.y = platforms[0].pos.y + bl.sizeY;
+          Bl.pos.x = (platforms[0].pos.x - (platforms[0].pWidth / 2)) + row * 200/4;;
+          Bl.pos.y = platforms[0].pos.y + Bl.sizeY;
           
           if(i != 0)
           {
@@ -58,21 +58,21 @@ void blockInit()
              
              //take the rotation point from the point to rotate so
              //its now rotating around the origin
-             bl.pos.x -= width/2;
-             bl.pos.y -= height/2;
+             Bl.pos.x -= width/2;
+             Bl.pos.y -= height/2;
              
-             float X1 = bl.pos.x * c - bl.pos.y * s;//rotate the the right x position
-             float Y1 = bl.pos.x * s + bl.pos.y * c;//rotate to the right y position
+             float X1 = Bl.pos.x * c - Bl.pos.y * s;//rotate the the right x position
+             float Y1 = Bl.pos.x * s + Bl.pos.y * c;//rotate to the right y position
              
              //add back the point so the new x and y are at their 
              //new respective positions
-             bl.pos.x = X1 + width/2;
-             bl.pos.y = Y1 + height/2;
+             Bl.pos.x = X1 + width/2;
+             Bl.pos.y = Y1 + height/2;
              
-             bl.pos.z = -1000;//set z
+             Bl.pos.z = -1000;//set z
              print("block", i , "created");
           }
-          blocks.add(bl);  
+          blocks.add(Bl);  
       }
     }
  }

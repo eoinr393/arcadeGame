@@ -10,7 +10,8 @@ class Player
   char button2;
   int index;
   int side = 0;
-  float toMove = (platforms[0].pWidth / 4) - 5;
+  int row;
+  float toMove = (platforms[0].pWidth / 4);
   color colour;
   boolean keyUp, keyDown, keyLeft, keyRight;
     
@@ -49,40 +50,72 @@ class Player
   
   void update()
   {
-    if (((checkKey(up)) && keyUp) && (side == 1 || side == 3))
+    if (((checkKey(up)) && keyUp) && ((side == 1 && row != 0) || (side == 3 && row != 3)))
     {
         pos.y -= toMove;
         keyUp = !keyUp;
+       if(side == 1)
+      {
+         row--; 
+      }
+      else
+      {
+         row++; 
+      }
     }
     if(!checkKey(up))
     {
        keyUp = true; 
     }
     
-    if (((checkKey(down)) && keyDown) && (side == 1 || side == 3))
+    if (((checkKey(down)) && keyDown) && ((side == 1 && row != 3) || (side == 3 && row != 0)))
     {
       pos.y += toMove;
       keyDown = !keyDown;
+      if(side == 1)
+      {
+         row++; 
+      }
+      else
+      {
+         row--; 
+      }
     }
     if(!checkKey(down))
     {
        keyDown = true; 
     }
     
-    if (((checkKey(left)) && keyLeft) && (side == 0 || side == 2))
+    if (((checkKey(left)) && keyLeft) && ((side == 0 && row != 0) || (side == 2 && row != 3)))
     {
       pos.x -= toMove;
       keyLeft = !keyLeft;
+      if(side == 0)
+      {
+         row--; 
+      }
+      else
+      {
+         row++; 
+      }
     }
     if(!checkKey(left))
     {
        keyLeft = true; 
     }
     
-    if (((checkKey(right)) && keyRight) && (side == 0 || side == 2))
+    if (((checkKey(right)) && keyRight) && ((side == 0 && row != 3) || (side == 2 && row != 0)))
     {
       pos.x += toMove;
       keyRight = !keyRight;
+      if(side == 0)
+      {
+         row++; 
+      }
+      else
+      {
+         row--; 
+      }
     }
     if(!checkKey(right))
     {

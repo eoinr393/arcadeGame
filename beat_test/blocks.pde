@@ -11,7 +11,7 @@ class Block
    
   Block()
   {
-    pos = new PVector(0,0, -500);  
+    pos = new PVector(0,0, -5000);  
   } 
   
   Block(int platform)
@@ -45,9 +45,9 @@ void blockInit()
       {
           Block Bl = new Block(i);
           
-          int row = int(random(1,5));
+          int row = int(random(0,4));
           
-          Bl.pos.x = (platforms[0].pos.x - (platforms[0].pWidth / 2)) + row * 200/4;;
+          Bl.pos.x = (platforms[0].pos.x - (platforms[0].pWidth / 2)) + (row * platforms[0].pWidth/4) + (platforms[0].pWidth/4)/2;//set the x position, 4 rows for the blocks to spawn
           Bl.pos.y = platforms[0].pos.y + Bl.sizeY;
           
           if(i != 0)
@@ -69,7 +69,7 @@ void blockInit()
              Bl.pos.x = X1 + width/2;
              Bl.pos.y = Y1 + height/2;
              
-             Bl.pos.z = -1000;//set z
+             Bl.pos.z = -5000;//set z
              print("block", i , "created");
           }
           blocks.add(Bl);  

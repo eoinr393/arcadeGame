@@ -58,5 +58,9 @@ void draw()
       block.update();
       block.display(); 
    }
+   
+   PlatformMove();
+   
    beatDetect();
+   
 }

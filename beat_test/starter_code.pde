@@ -43,7 +43,7 @@ void setUpPlayerControllers()
 {
   XML xml = loadXML("arcade.xml");
   XML[] children = xml.getChildren("player");
-  float gap = (platforms[0].pWidth / 4) - 5;
+  float gap = (platforms[0].pWidth / 4) + (platforms[0].pWidth/4 - 50);
   
   for(int i = 0 ; i < children.length ; i ++)  
   {
@@ -52,9 +52,10 @@ void setUpPlayerControllers()
             i
             , color(random(0, 255), random(0, 255), random(0, 255))
             , playerXML);
-    float x = width/2 + (i * gap);
+    float x = ((platforms[0].pos.x - (platforms[0].pWidth / 2)) + (2 * platforms[0].pWidth/4) + (platforms[0].pWidth/4)/2) + (i * gap);
     p.pos.x = x;
     p.pos.y = height - 25;
+    p.row = int(((p.pos.x - (platforms[0].pos.x - platforms[0].pWidth/2)) / (platforms[0].pWidth / 4)));
    players.add(p);         
   }
 }

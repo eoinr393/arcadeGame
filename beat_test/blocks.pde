@@ -41,14 +41,14 @@ void blockInit()
 {
     for(int i = 0; i < 4; i++)
     {
-      if(platforms[i].displayed == true)
+      if(platforms[i].pos.z - (platforms[i].len /2 ) <= -5000)
       {
           Block Bl = new Block(i);
           
           int row = int(random(0,4));
           
           Bl.pos.x = (platforms[0].pos.x - (platforms[0].pWidth / 2)) + (row * platforms[0].pWidth/4) + (platforms[0].pWidth/4)/2;//set the x position, 4 rows for the blocks to spawn
-          Bl.pos.y = platforms[0].pos.y + Bl.sizeY;
+          Bl.pos.y = platforms[0].pos.y - Bl.sizeY;
           
           if(i != 0)
           {

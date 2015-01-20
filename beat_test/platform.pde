@@ -22,13 +22,17 @@ class Platform
      this.index = index;
    }
    
+   //update function
    void update()
    {
      if(moveSpeed < 20)
      {
        moveSpeed += 0.01;
      }
+     if(index != 0)
+     {
        pos.z += moveSpeed;
+     }
        
        //see if its displayed or not
        if(pos.z - len > -(len/2))
@@ -88,7 +92,6 @@ void PlatformMove()
       
           float tempX= width/2;
           float tempY = height - 50; 
-          platforms[i].pos.z = -100;
           platforms[i].len = (int)random(2000,10000);
           
          if(i != 0)
@@ -110,16 +113,19 @@ void PlatformMove()
              platforms[i].pos.x = X1 + width/2;
              platforms[i].pos.y = Y1 + height/2;
              
-             platforms[i].pos.z = -5000;//set z
+             platforms[i].pos.z = -5000 - (platforms[i].len /2);//set z
              
           }
           else
           {
               platforms[i].pos.x = width/2;
               platforms[i].pos.y = height - 50; 
+              platforms[i].pos.z = 0;
+              platforms[i].len = 10000;
           }
 
     }
   }
+  
   
  }

@@ -134,7 +134,7 @@ class Player
       println("Player " + index + " butt2");
     }
   
-    if(checkKey(button1) && checkKey(left))
+    if((checkKey(button1) && checkKey(left)) && platforms[1].pos.z + platforms[1].len / 2 >= pos.z)
     {
         
        if(side == 0)
@@ -152,7 +152,7 @@ class Player
        
        side = 1;
     }
-    if(checkKey(button1) && checkKey(up))
+    if((checkKey(button1) && checkKey(up)) && platforms[2].pos.z + platforms[2].len / 2 >= pos.z)
     {
       if(side == 0)
        {
@@ -169,7 +169,7 @@ class Player
      
       side = 2;  
     }
-    if(checkKey(button1) && checkKey(right))
+    if((checkKey(button1) && checkKey(right)) && platforms[3].pos.z + platforms[3].len / 2 >= pos.z)
     {
        if(side == 0)
        {
@@ -186,7 +186,7 @@ class Player
        
        side = 3;
     }
-    if(checkKey(button1) && checkKey(down))
+    if((checkKey(button1) && checkKey(down))&& platforms[0].pos.z + platforms[0].len / 2 >= pos.z)
     {
         if(side == 1)
        {

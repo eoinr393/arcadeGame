@@ -15,6 +15,7 @@ void setup()
    //perform setups
    PlatformInit();
    setUpPlayerControllers();
+   pointsInit();
    //load songs
    minim = new Minim(this);
    song = minim.loadFile("Crypt of the NecroDancer Alpha OST - Zone 3 Level 1 Cold(New).mp3");
@@ -57,6 +58,11 @@ void draw()
    {
       block.update();
       block.display(); 
+   }
+   for(Point point:points)
+   {
+      point.update();
+      point.display(); 
    }
    
    PlatformMove();

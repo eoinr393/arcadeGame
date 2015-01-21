@@ -54,7 +54,7 @@ void setUpPlayerControllers()
             , playerXML);
     float x = ((platforms[0].pos.x - (platforms[0].pWidth / 2)) + (2 * platforms[0].pWidth/4) + (platforms[0].pWidth/4)/2) + (i * gap);
     p.pos.x = x;
-    p.pos.y = height - 25;
+    p.pos.y = height - 85;
     p.row = int(((p.pos.x - (platforms[0].pos.x - platforms[0].pWidth/2)) / (platforms[0].pWidth / 4)));
    players.add(p);         
   }

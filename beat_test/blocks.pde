@@ -3,7 +3,7 @@ ArrayList<Block> blocks = new ArrayList<Block>();
 class Block
 {
   PVector pos;
-  //int index;
+  boolean hit = false;
   int platform;
   float sizeX = (platforms[0].pWidth / 4) - 5;
   float sizeY = (platforms[0].pWidth / 4) - 5;
@@ -23,6 +23,26 @@ class Block
   void update()
   {
      pos.z += moveSpeed;
+     
+     //colision with players
+     for( int i = 0; i < 2; i++)
+     {
+        //if(( dist(pos.x,pos.y,pos.z, players.get(i).pos.x, players.get(i).pos.y, players.get(i).pos.z) <= sizeX/2 + 10)) 
+        
+        if(pos.x + sizeX/2 >= players.get(i).pos.x && pos.x - sizeX/2 <= players.get(i).pos.x)
+        {
+          if(pos.y + sizeY/2 >= players.get(i).pos.y && pos.y - sizeY/2 <= players.get(i).pos.y)
+          {
+            if((pos.z + sizeX/2 >= players.get(i).pos.z + 10  && pos.z - sizeX/2 <= players.get(i).pos.z -10) && hit == false)
+            {
+              players.get(i).health -= 1;
+              hit = true;
+              print("hit \n");
+            }
+          }
+        }
+        
+     }
   }
   
   void display()
@@ -47,8 +67,9 @@ void blockInit()
           
           int row = int(random(0,4));
           
+          Bl.platform = i;
           Bl.pos.x = (platforms[0].pos.x - (platforms[0].pWidth / 2)) + (row * platforms[0].pWidth/4) + (platforms[0].pWidth/4)/2;//set the x position, 4 rows for the blocks to spawn
-          Bl.pos.y = platforms[0].pos.y - Bl.sizeY;
+          Bl.pos.y = platforms[0].pos.y - 20;//Bl.sizeY
           
           if(i != 0)
           {
@@ -70,7 +91,7 @@ void blockInit()
              Bl.pos.y = Y1 + height/2;
              
              Bl.pos.z = -5000;//set z
-             print("block", i , "created");
+             //print("block", i , "created");
           }
           blocks.add(Bl);  
       }

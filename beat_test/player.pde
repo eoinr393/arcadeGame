@@ -11,6 +11,8 @@ class Player
   int index;
   int side = 0;
   int row;
+  int health = 3;
+  float sizeX = 20;
   float toMove = (platforms[0].pWidth / 4);
   color colour;
   boolean keyUp, keyDown, keyLeft, keyRight;
@@ -214,6 +216,22 @@ class Player
     translate(pos.x, pos.y, 0);   
     box(20);
     popMatrix();
+    
+    
+    for(int i = 0; i < players.size(); i++)
+    {
+       for( int j = 0; j < health; j++)
+       {
+          float hX, hY;
+          
+          hX = width/20;
+          hY = height/20;
+          
+          stroke(255,0,0);
+          
+          rect(hX + (i * (width/2 - hX)) + (j * 40), hY + ( j * ((height/5) /3)),width/20,height/5);
+       } 
+    }
   }  
 }
 

@@ -68,8 +68,7 @@ void PlatformInit()
 {
    for(int i = 0; i < 4; i++)
   {
-      platforms[i] = new Platform(i);
-      
+      platforms[i] = new Platform(i); 
   }
   
 }

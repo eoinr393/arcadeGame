@@ -1,7 +1,9 @@
+boolean songEnd = false;
+
 class BeatListener implements AudioListener
 {
-  private BeatDetect beat;
-  private AudioPlayer source;
+   private BeatDetect beat;
+   private AudioPlayer source;
  
   BeatListener(BeatDetect beat, AudioPlayer source)
  {
@@ -69,4 +71,9 @@ void beatDetect()
    {
       eRadius2 = 20; 
    } 
+   
+   songEnd = !song.isPlaying();
+   
+     
+   
 }

@@ -56,6 +56,7 @@ void setUpPlayerControllers()
     p.pos.x = x;
     p.pos.y = height - 85;
     p.row = int(((p.pos.x - (platforms[0].pos.x - platforms[0].pWidth/2)) / (platforms[0].pWidth / 4)));
+    p.index = i;
    players.add(p);         
   }
 }

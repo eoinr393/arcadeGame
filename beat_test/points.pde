@@ -1,41 +1,30 @@
-ArrayList<Point> points = new ArrayList<Point>();
-
-class Point
+void UI()
 {
-  int points = 0;
-  int bonus = 0;
-  PVector pos;
-
-  Point()
+  for (int i = 0; i < players.size (); i ++)
   {
-    pos = new PVector(0,0);
-  }
+    float hX, hY;
+    float hHeight = height / 5;
 
-  Point(int points, int bonus)
-  {
-    this();
-    this.points = points;
-    this.bonus = bonus;
-  }
+    hX = width/20;
+    hY = height/20; 
+    
+    for (int j = 0; j < players.get (i).health; j++)
+    {
+      stroke(255, 0, 0);
 
-  void update()
-  {
-    points += (int)moveSpeed;
-  }
+      rect(hX + (i * (width/2 - hX)) + (j * 40), hY + ( j * ((height/5) /3)), width/20, height/5 - (j * ((height/5) /3) ));
+      if(players.get(i).alive == false)
+      {
+         stroke(255,0,0);
+         text("U R DED", hX + (i * (width/2 - hX)), hY + height/3);
+      }
+    }
 
-  void display()
-  {
-    text(points, pos.x,150);
+    text("points:" + players.get(i).points + "\n  X" + players.get(i).bonus, hX + (i * (width/2 - hX)), hY + height/4);
+    if(songEnd)
+    {
+       text("stage Complete", width/2, height/2); 
+    }
   }
-}
-
-void pointsInit()
-{
-   for(int i = 0; i < players.size(); i++)
-   {
-      Point pt = new Point();
-      pt.pos.x = 150 + (i * (width/2));
-      points.add(pt);
-   } 
 }
 

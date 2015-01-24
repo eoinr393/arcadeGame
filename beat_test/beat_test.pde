@@ -30,7 +30,7 @@ void setup()
   //algorithm if it is giving too many false-positives. The default calue is 10
   //which is essentially no damping, If you try and set the sensitivity to a negatice value
   //an error will appear adn it will be set to 10 instead
-  beat.setSensitivity(200);
+  beat.setSensitivity(300);
   kickSize = snareSize = hatSize = 16;
   //make a new beat listener so that we wont miss any buffers for the analysis
   bl = new BeatListener(beat,song);
@@ -60,6 +60,7 @@ void draw()
    }
    
    PlatformMove();
+   bonus();
    
    beatDetect();
    

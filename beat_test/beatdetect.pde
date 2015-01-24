@@ -5,7 +5,7 @@ class BeatListener implements AudioListener
    private BeatDetect beat;
    private AudioPlayer source;
  
-  BeatListener(BeatDetect beat, AudioPlayer source)
+ BeatListener(BeatDetect beat, AudioPlayer source)
  {
     this.source = source;
     this.source.addListener(this);
@@ -24,7 +24,7 @@ class BeatListener implements AudioListener
 
 void beatDetect()
 {
-  beat.detect(song.mix);
+   beat.detect(song.mix);
    float a = map(eRadius,20,80,60,255);
    fill(60,255,0,a);
    if(beat.isKick())
@@ -33,7 +33,7 @@ void beatDetect()
       eRadius = 80;
       blockInit();
    } 
-   if(beat.isOnset())
+   if(beat.isSnare())
    {
       snareSize = 32;
       eRadius1 = 80;
@@ -72,8 +72,16 @@ void beatDetect()
       eRadius2 = 20; 
    } 
    
-   songEnd = !song.isPlaying();
-   
-     
-   
+   songEnd = !song.isPlaying(); 
+   if(songEnd)
+   {
+     stop();
+   }  
+}
+
+void stop()
+{
+   song.close();
+  
+  minim.stop(); 
 }

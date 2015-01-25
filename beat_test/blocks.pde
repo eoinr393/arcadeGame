@@ -49,7 +49,7 @@ class Block
   {
      pushMatrix();
      stroke(200,0,100);
-     noFill();
+     fill(200,0,100,30);
      translate(pos.x,pos.y,pos.z);
      box(sizeX,sizeY,sizeX);
      popMatrix();

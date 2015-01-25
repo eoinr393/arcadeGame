@@ -81,7 +81,7 @@ void beatDetect()
 
 void stop()
 {
-   song.close();
+  song.close();
   
   minim.stop(); 
 }

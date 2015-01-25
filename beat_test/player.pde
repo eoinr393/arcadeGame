@@ -21,14 +21,13 @@ class Player
   boolean keyUp, keyDown, keyLeft, keyRight, butt;
   boolean alive = true;
   PVector pos;
-  PVector knee = new PVector(sizeX/4, sizeX *2,0);
-  PVector foot = new PVector(sizeX/4,sizeX * 2 + sizeX/2, 0);
+  PVector knee = new PVector(sizeX/4, sizeX *2, 0);
+  PVector foot = new PVector(sizeX/4, sizeX * 2 + sizeX/2, 0);
 
 
   Player()
   {
-    pos = new PVector(width / 2, height / 2);
-    
+    pos = new PVector();
   }
 
   Player(int index, color colour, char up, char down, char left, char right, char start, char button1, char button2)
@@ -61,28 +60,26 @@ class Player
 
   void update()
   { 
-    if(alive)
+    if (alive)
     {
       int otherIndex;
-      
-      if(index == 0)
+
+      if (index == 0)
       {
-        otherIndex = 1;  
-      }
-      else
+        otherIndex = 1;
+      } else
       {
         otherIndex = 0;
       }
       //if a player is on the side platforms and presses up
-      if((((checkKey(up)) && keyUp) && ((side == 1 && row != 0) || (side == 3 && row != 3))) && !checkKey(button1))
+      if ((((checkKey(up)) && keyUp) && ((side == 1 && row != 0) || (side == 3 && row != 3))) && !checkKey(button1))
       {
         //if the player wont touch the other by moving once
-        //if(players.get(index).side != players.get(otherIndex).side || (players.get(index).side == players.get(otherIndex).side && players.get(index).pos.y - players.get(otherIndex).pos.y != toMove ))
-        if((players.get(index).side != players.get(otherIndex).side) ||(players.get(index).side == 1 && players.get(otherIndex).side == 1 &&(players.get(otherIndex).row != players.get(index).row -1)) || (players.get(index).side == 3 && players.get(otherIndex).side == 3 &&(players.get(otherIndex).row != players.get(index).row +1)))
+        if ((players.get(index).side != players.get(otherIndex).side) ||(players.get(index).side == 1 && players.get(otherIndex).side == 1 &&(players.get(otherIndex).row != players.get(index).row -1)) || (players.get(index).side == 3 && players.get(otherIndex).side == 3 &&(players.get(otherIndex).row != players.get(index).row +1)))
         {
           pos.y -= toMove;
           keyUp = !keyUp;
-    
+
           if (side == 1)
           {
             row--;
@@ -96,11 +93,10 @@ class Player
       {
         keyUp = true;
       }
-  
+
       if ((((checkKey(down)) && keyDown) && ((side == 1 && row != 3) || (side == 3 && row != 0))) && !checkKey(button1))
       { 
-        //if(players.get(index).side != players.get(otherIndex).side || (players.get(index).side == players.get(otherIndex).side && players.get(otherIndex).pos.y - players.get(index).pos.y != toMove ))
-        if((players.get(index).side != players.get(otherIndex).side) || (players.get(index).side == 1 && players.get(otherIndex).side == 1 &&(players.get(otherIndex).row != players.get(index).row +1)) || (players.get(index).side == 3 && players.get(otherIndex).side == 3 &&(players.get(otherIndex).row != players.get(index).row -1)))
+        if ((players.get(index).side != players.get(otherIndex).side) || (players.get(index).side == 1 && players.get(otherIndex).side == 1 &&(players.get(otherIndex).row != players.get(index).row +1)) || (players.get(index).side == 3 && players.get(otherIndex).side == 3 &&(players.get(otherIndex).row != players.get(index).row -1)))
         {
           pos.y += toMove;
           keyDown = !keyDown;
@@ -117,11 +113,10 @@ class Player
       {
         keyDown = true;
       }
-  
-      if((((checkKey(left)) && keyLeft) && ((side == 0 && row != 0) || (side == 2 && row != 3))) && !checkKey(button1))
+
+      if ((((checkKey(left)) && keyLeft) && ((side == 0 && row != 0) || (side == 2 && row != 3))) && !checkKey(button1))
       { 
-        //if(players.get(index).side != players.get(otherIndex).side || (players.get(index).side == players.get(otherIndex).side && players.get(index).pos.x - players.get(otherIndex).pos.x != toMove ))
-        if((players.get(index).side != players.get(otherIndex).side) || (players.get(index).side == 0 && players.get(otherIndex).side == 0 && (players.get(otherIndex).row != players.get(index).row -1)) || (players.get(index).side == 2 && players.get(otherIndex).side == 2 &&(players.get(otherIndex).row != players.get(index).row +1)))
+        if ((players.get(index).side != players.get(otherIndex).side) || (players.get(index).side == 0 && players.get(otherIndex).side == 0 && (players.get(otherIndex).row != players.get(index).row -1)) || (players.get(index).side == 2 && players.get(otherIndex).side == 2 &&(players.get(otherIndex).row != players.get(index).row +1)))
         {
           pos.x -= toMove;
           keyLeft = !keyLeft;
@@ -132,18 +127,16 @@ class Player
           {
             row++;
           }
-         
         }
       }
       if (!checkKey(left))
       {
         keyLeft = true;
       }
-  
+
       if ((((checkKey(right)) && keyRight) && ((side == 0 && row != 3) || (side == 2 && row != 0))) && !checkKey(button1))
       {
-        //if(players.get(index).side != players.get(otherIndex).side || (players.get(index).side == players.get(otherIndex).side && players.get(otherIndex).pos.x - players.get(index).pos.x != toMove ))
-        if((players.get(index).side != players.get(otherIndex).side) || (players.get(index).side == 0 && players.get(otherIndex).side == 0 &&(players.get(otherIndex).row != players.get(index).row +1)) || (players.get(index).side == 2 && players.get(otherIndex).side == 2 &&(players.get(otherIndex).row != players.get(index).row -1)))
+        if ((players.get(index).side != players.get(otherIndex).side) || (players.get(index).side == 0 && players.get(otherIndex).side == 0 &&(players.get(otherIndex).row != players.get(index).row +1)) || (players.get(index).side == 2 && players.get(otherIndex).side == 2 &&(players.get(otherIndex).row != players.get(index).row -1)))
         {
           pos.x += toMove;
           keyRight = !keyRight;
@@ -175,7 +168,7 @@ class Player
       //rotate left
       if (((checkKey(button1) && checkKey(left)) && platforms[1].pos.z + platforms[1].len / 2 >= pos.z) && keyLeft)
       {
-        if(players.get(otherIndex).side != 1 || (players.get(otherIndex).side == 1 && players.get(otherIndex).row != players.get(index).row))
+        if (players.get(otherIndex).side != 1 || (players.get(otherIndex).side == 1 && players.get(otherIndex).row != players.get(index).row))
         {
           if (side == 0)
           {
@@ -189,10 +182,10 @@ class Player
           {
             pos = playerRotate(PI, pos.x, pos.y);
           }
-    
+
           theta = PI/2;
           side = 1;
-    
+
           if (bonus < 5 && alive == true)
           {
             bonus++;
@@ -201,9 +194,9 @@ class Player
         keyLeft = false;
       }
       //rotate up
-      if(((checkKey(button1) && checkKey(up)) && platforms[2].pos.z + platforms[2].len / 2 >= pos.z) && keyUp)
+      if (((checkKey(button1) && checkKey(up)) && platforms[2].pos.z + platforms[2].len / 2 >= pos.z) && keyUp)
       {
-        if(players.get(otherIndex).side != 2 || (players.get(otherIndex).side == 2 && players.get(otherIndex).row != players.get(index).row))
+        if (players.get(otherIndex).side != 2 || (players.get(otherIndex).side == 2 && players.get(otherIndex).row != players.get(index).row))
         {
           if (side == 0)
           {
@@ -217,7 +210,7 @@ class Player
           {
             pos = playerRotate(PI + PI/2, pos.x, pos.y);
           } 
-          
+
           theta = PI;
           side = 2;  
           if (bonus < 5 && alive == true)
@@ -225,13 +218,13 @@ class Player
             bonus++;
           }
         }
-  
+
         keyUp = false;
       }
       //rotate right
       if (((checkKey(button1) && checkKey(right)) && platforms[3].pos.z + platforms[3].len / 2 >= pos.z) && keyRight)
       {
-        if(players.get(otherIndex).side != 3 || (players.get(otherIndex).side == 3 && players.get(otherIndex).row != players.get(index).row))
+        if (players.get(otherIndex).side != 3 || (players.get(otherIndex).side == 3 && players.get(otherIndex).row != players.get(index).row))
         {
           if (side == 0)
           {
@@ -245,22 +238,22 @@ class Player
           {
             pos = playerRotate(PI, pos.x, pos.y);
           } 
-    
+
           theta = PI/2 + PI;
           side = 3;
-    
+
           if (bonus < 5 && alive == true)
           {
             bonus++;
           }
         }
-  
+
         keyRight = false;
       }
       //rotate down
-      if(((checkKey(button1) && checkKey(down))&& platforms[0].pos.z + platforms[0].len / 2 >= pos.z) && keyDown)
+      if (((checkKey(button1) && checkKey(down))&& platforms[0].pos.z + platforms[0].len / 2 >= pos.z) && keyDown)
       {
-        if(players.get(otherIndex).side != 0 || (players.get(otherIndex).side == 0 && players.get(otherIndex).row != players.get(index).row))
+        if (players.get(otherIndex).side != 0 || (players.get(otherIndex).side == 0 && players.get(otherIndex).row != players.get(index).row))
         {
           if (side == 1)
           {
@@ -274,73 +267,74 @@ class Player
           {
             pos = playerRotate(PI/2, pos.x, pos.y);
           }
-          
+
           theta = 0;
           side = 0;
-    
+
           if (bonus < 5 && alive == true)
           {
             bonus++;
           }
         }
-    
-          keyDown = false;
+
+        keyDown = false;
       }
-  
-  
+
+
       //points
       if (health > 0 && !songEnd)
       { 
         points += moveSpeed * bonus;
       }
-      if(health < 1)
+      if (health < 1)
       {
         alive = false;
-        row = 5; 
+        row = 5;
       }
-      
-      if(knee.z <= pos.z - sizeX/2 || knee.z >= pos.z + sizeX)
+
+      if (knee.z <= pos.z - sizeX/2 || knee.z >= pos.z + sizeX)
       {
-         kneeMove *= -1; 
+        kneeMove *= -1;
       }
-      
+
       knee.z += kneeMove;
       foot.z += kneeMove;
-      
-     
-  
+
+
+
       //if you go off the platform
       playerPlatform();
     }
+
   }
-  
-    void display()
+
+  void display()
+  { 
+    if (alive)
     { 
-      if (alive)
-      { 
-        
-        stroke(colour);
-        fill(colour, 30); 
-        pushMatrix();
-        translate(pos.x, pos.y, 0); 
-        rotate(theta);
-          
-        box(sizeX);
-        line(0,sizeX/2,0,0, sizeX + sizeX/2, sizeX);
-        //arms
-        line(0,sizeX/2 + sizeX/3,0,-sizeX/2,sizeX +  sizeX/3, sizeX/2 + sizeX/3);
-        line(0,sizeX/2 + sizeX/3,0, sizeX/2,sizeX + sizeX/3, sizeX/2 + sizeX/3);
-        //thighs
-        line(0,sizeX +sizeX/2, sizeX/2,-knee.x,knee.y, -knee.z);
-        line(0, sizeX +sizeX/2, sizeX/2, knee.x,knee.y,knee.z);
-        //calves
-        line(-knee.x, knee.y, -knee.z, -foot.x, foot.y,-foot.z);
-        line(knee.x, knee.y, knee.z, foot.x, foot.y, foot.z);
-        
-        popMatrix();
-      }
-      UI();
+
+      stroke(colour);
+      fill(colour, 30); 
+      pushMatrix();
+      translate(pos.x, pos.y, 0); 
+      rotate(theta);
+
+      box(sizeX);
+      line(0, sizeX/2, 0, 0, sizeX + sizeX/2, sizeX);
+      //arms
+      line(0, sizeX/2 + sizeX/3, 0, -sizeX/2, sizeX +  sizeX/3, sizeX/2 + sizeX/3);
+      line(0, sizeX/2 + sizeX/3, 0, sizeX/2, sizeX + sizeX/3, sizeX/2 + sizeX/3);
+      //thighs
+      line(0, sizeX +sizeX/2, sizeX/2, -knee.x, knee.y, -knee.z);
+      line(0, sizeX +sizeX/2, sizeX/2, knee.x, knee.y, knee.z);
+      //calves
+      line(-knee.x, knee.y, -knee.z, -foot.x, foot.y, -foot.z);
+      line(knee.x, knee.y, knee.z, foot.x, foot.y, foot.z);
+
+      popMatrix();
     }
+    UI();
+  }
 }
 
 PVector playerRotate(float rot, float tempX, float tempY)
@@ -371,16 +365,15 @@ void playerPlatform()
   for (int i = 0; i < players.size (); i++)
   {
     int tempSide = players.get(i).side;
-    
+
     int otherIndex;
     //set variables for the two players
-    if(i == 0)
+    if (i == 0)
     {
-       otherIndex = 1; 
-    }
-    else
+      otherIndex = 1;
+    } else
     {
-       otherIndex = 0; 
+      otherIndex = 0;
     }
     //if off the platform
     if (0 <= platforms[tempSide].pos.z - (platforms[tempSide].len/2))
@@ -390,14 +383,13 @@ void playerPlatform()
       if (players.get(i).side == 1)
       {
         //check if the player is on the boundries of the platform
-        if((players.get(0).row == players.get(1).row) && players.get(otherIndex).side == 0)
+        if ((players.get(0).row == players.get(1).row) && players.get(otherIndex).side == 0)
         {
-          if(players.get(i).row == 0)
+          if (players.get(i).row == 0)
           {
             players.get(i).pos.y += players.get(i).toMove;
             players.get(i).row++;
-          }
-          else
+          } else
           {
             players.get(i).pos.y -= players.get(i).toMove;
             players.get(i).row--;
@@ -410,19 +402,18 @@ void playerPlatform()
       if (players.get(i).side == 2)
       {
         //check if players share the same row and the other player is on the bottom
-        if((players.get(0).row == players.get(1).row)&& players.get(otherIndex).side == 0)
+        if ((players.get(0).row == players.get(1).row)&& players.get(otherIndex).side == 0)
         {
-            //change the players row accordingly
-            if(players.get(i).row == 0)
-            {
-              players.get(i).pos.x -= players.get(i).toMove;
-              players.get(i).row++;
-            }
-            else
-            {
-              players.get(i).pos.x += players.get(i).toMove;
-              players.get(i).row--;
-            }
+          //change the players row accordingly
+          if (players.get(i).row == 0)
+          {
+            players.get(i).pos.x -= players.get(i).toMove;
+            players.get(i).row++;
+          } else
+          {
+            players.get(i).pos.x += players.get(i).toMove;
+            players.get(i).row--;
+          }
         }
         //rotate the player
         players.get(i).pos = playerRotate(PI, players.get(i).pos.x, players.get(i).pos.y);
@@ -430,19 +421,18 @@ void playerPlatform()
       if (players.get(i).side == 3)
       {
         //check if players share the same row and the other player is on the bottom
-        if((players.get(0).row == players.get(1).row)&& players.get(otherIndex).side == 0)
+        if ((players.get(0).row == players.get(1).row)&& players.get(otherIndex).side == 0)
         {
-            //change the players row accordingly
-            if(players.get(i).row == 0)
-            {
-              players.get(i).pos.y -= players.get(i).toMove;
-              players.get(i).row++;
-            }
-            else
-            {
-              players.get(i).pos.y += players.get(i).toMove;
-              players.get(i).row--;
-            }
+          //change the players row accordingly
+          if (players.get(i).row == 0)
+          {
+            players.get(i).pos.y -= players.get(i).toMove;
+            players.get(i).row++;
+          } else
+          {
+            players.get(i).pos.y += players.get(i).toMove;
+            players.get(i).row--;
+          }
         }
         //rotate the player
         players.get(i).pos = playerRotate(PI/2, players.get(i).pos.x, players.get(i).pos.y);
@@ -451,5 +441,26 @@ void playerPlatform()
       players.get(i).side = 0;
     }
   }
+}
+
+void replay()
+{
+  float gap = (platforms[0].pWidth / 4) + (platforms[0].pWidth/4 - players.get(0).sizeX) + players.get(0).sizeX;
+  
+  for (int i = 0; i < 2; i ++)
+  {
+    players.get(i).points = 0;
+    players.get(i).health = 3;
+    players.get(i).bonus = 1;
+    
+    players.get(i).pos.x = xRows[0 + (i*3)]; //((platforms[0].pos.x - (platforms[0].pWidth / 2)) + (2 * platforms[0].pWidth/4) + (platforms[0].pWidth/4)/2) + (i * gap);
+    players.get(i).pos.y = height - 85;
+    players.get(i).row = 0 + (i*3);//int(((players.get(i).pos.x - (platforms[0].pos.x - platforms[0].pWidth/2)) / (platforms[0].pWidth / 4)));
+    players.get(i).side = 0;
+    players.get(i).alive = true;
+  }
+  gameOver = false;
+  song.rewind();
+
 }
 

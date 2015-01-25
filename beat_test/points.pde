@@ -1,6 +1,8 @@
+int deathCount = 0;
+boolean gameOver = false;
+
 void UI()
 {
-  boolean gameOver = false;
   //print the health and score of both players
   for (int i = 0; i < players.size (); i ++)
   {
@@ -8,12 +10,13 @@ void UI()
     float hHeight = height / 5;
     float sizeX = width/10;
     float sizeY = height/20;
-    int deathCount = 0;
 
     hX = width/20;
     hY = height/20; 
 
     float hGap = width -  (3*(sizeX + sizeX/10) + hX);
+    
+    text(players.get(i).row,width/2 + i *20, height/2);
 
     for (int j = 0; j < players.get (i).health; j++)
     {
@@ -26,8 +29,9 @@ void UI()
     fill(255, 0, 25);
     if (players.get(i).alive == false)
     {
+      textSize(15);
       text("U R DED", hX + (i * hGap), hY + sizeY * 3);
-      deathCount += i + 1;
+      deathCount++;
     }
 
     fill(0,255,0);
@@ -35,10 +39,12 @@ void UI()
     
     if (songEnd && !gameOver)
     {
+      textSize(30);
+      fill(25,0,255,500);
       text("stage Complete", width/2, height/2);
     }
     
-    if(deathCount == players.size())
+    if(!players.get(0).alive && !players.get(1).alive)
     {
        textSize(15);
        text("Game Over", width/2 - (6*15)/2, height/2); 

@@ -7,7 +7,7 @@ AudioPlayer song;
 BeatDetect beat;
 BeatListener bl;
 
-float eRadius, eRadius1, eRadius2, kickSize, snareSize, hatSize;
+float eRadius,kickSize, snareSize, hatSize;
 boolean mainMenu = true;
 boolean songSelection = false;
 boolean howToPlay = false;
@@ -16,7 +16,8 @@ boolean highScoreScreen = false;
 
 void setup()
 {
-   size(700,500,P3D);  
+   size(700,500,P3D); 
+  frameRa 
    //perform setups
    
    PlatformInit();
@@ -27,7 +28,7 @@ void setup()
    highScore();
    
   ellipseMode(RADIUS);
-  eRadius = eRadius1 = eRadius2 = 20;
+  eRadius =  20;
    
 }
 
@@ -49,7 +50,6 @@ void draw()
    else if(highScoreScreen)
    {
       enterName();
-      updateHighscore(); 
    }
    else
    {

@@ -30,20 +30,20 @@ void beatDetect()
    if(beat.isKick())
    {
       kickSize = 32;
-      eRadius = 80;
+      eRadius = height/10;
       blockInit();
    } 
    if(beat.isSnare())
    {
       snareSize = 32;
-      eRadius1 = 80;
+      eRadius = height/10;
       blockInit();
 
    } 
    if(beat.isHat())
    {
       hatSize = 32;
-      eRadius2 = 80;
+      eRadius = height/10;
       blockInit();
    } 
    
@@ -52,25 +52,13 @@ void beatDetect()
    hatSize = constrain(hatSize * 0.95, 16, 32);
    
    ellipse(width/2, height/2, eRadius, eRadius);
-   ellipse(50,50, eRadius1, eRadius1);
-   ellipse(250,50, eRadius2,eRadius2);
    
    eRadius *= 0.95;
-   eRadius1 *= 0.95;
-   eRadius2 *= 0.95;
    
-   if( eRadius < 20)
+   if( eRadius < height/35)
    {
-      eRadius = 20; 
+      eRadius = height/35; 
    }
-   if( eRadius1 < 20)
-   {
-      eRadius1 = 20; 
-   }
-   if( eRadius2 < 20)
-   {
-      eRadius2 = 20; 
-   } 
    
    songEnd = !song.isPlaying(); 
    if(songEnd)

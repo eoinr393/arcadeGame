@@ -25,7 +25,7 @@ void UI()
     }
     //death message
     textAlign(LEFT);
-    fill(255, 0, 25);
+    fill(255, 0, 25,500);
     if (players.get(i).alive == false)
     {
       textSize(15);
@@ -34,7 +34,9 @@ void UI()
     }
     //print the score and the multiplier
     fill(0, 255, 0);
-    text("score:" + players.get(i).points + "\n  X" + players.get(i).bonus, hX + (i * hGap), hY + sizeX * 2);
+    text("score:" + players.get(i).points , hX + (i * hGap), hY + sizeX * 1.2);
+    
+    text("X" + players.get(i).bonus , hX + (i * hGap) + , hY + sizeX * 1.2);
     //if you finish the level
     if (songEnd && !gameOver)
     {
@@ -43,11 +45,16 @@ void UI()
 
       text("stage Complete", width/2, height/2);
 
-      //if they've beaten the high score
-      if (players.get(i).points > songs.get(menuCount).highScore)
+      //if they've beaten the high score and each others score
+      if ((players.get(0).points > songs.get(menuCount).highScore) && players.get(0).points > players.get(1).points)
       {
         highScoreScreen = true;
-        bestPlayer = i;
+        bestPlayer = 0;
+      }
+      if ((players.get(1).points > songs.get(menuCount).highScore) && players.get(1).points > players.get(0).points)
+      {
+        highScoreScreen = true;
+        bestPlayer = 1;
       }
     }
     //if both players are dead
@@ -57,10 +64,15 @@ void UI()
       text("Game Over", width/2 - (6*15)/2, height/2); 
       gameOver = true;
       textSize(12);
-      if (players.get(i).points > songs.get(menuCount).highScore)
+      if ((players.get(0).points > songs.get(menuCount).highScore) && players.get(0).points > players.get(1).points)
       {
         highScoreScreen = true;
-        bestPlayer = i;
+        bestPlayer = 0;
+      }
+      if ((players.get(1).points > songs.get(menuCount).highScore) && players.get(1).points > players.get(0).points)
+      {
+        highScoreScreen = true;
+        bestPlayer = 1;
       }
     }
   }

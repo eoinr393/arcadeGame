@@ -71,12 +71,12 @@ void enterName()
        alphaLock = false; 
     }
   }
-  else if(nameEntered == true)
+  else if(nameEntered == true || name.length() >= 6)
   {
     songs.get(menuCount).player = name;
     songs.get(menuCount).highScore = players.get(bestPlayer).points;
-    updateHighscore();
     println("name recorded");
+    updateHighscore(); 
   }
   
   textSize(20);
@@ -100,6 +100,13 @@ void updateHighscore()
     
     saveStrings("HighScores.txt",scoreWriter);
     println(scoreWriter);
+    
+    if(checkKey(players.get(bestPlayer).start))
+    {
+      returnMainMenu();
+    }
+    
+    
     
     
 }

@@ -53,10 +53,20 @@ void setUpPlayerControllers()
 
   for (int i = 0; i < children.length; i ++)  
   {
+    color colour;
     XML playerXML = children[i];
+    
+    if(i == 0)
+    {
+       colour = color(255, random(0,255), 0); 
+    }
+    else
+    {
+       colour = color(0, random(0,255), 255); 
+    }
     Player p = new Player(
     i
-      , color(random(0, 255), random(0, 255), random(0, 255))
+      , colour
       , playerXML);
     float x = xRows[0 + (i *3)];//((platforms[0].pos.x - (platforms[0].pWidth / 2)) + (2 * platforms[0].pWidth/4) + (platforms[0].pWidth/4)/2) + (i * gap);
     p.pos.x = x;

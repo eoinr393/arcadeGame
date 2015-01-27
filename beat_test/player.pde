@@ -1,4 +1,4 @@
-class Player
+class Player extends GameObject
 {
   char up;
   char down;
@@ -7,7 +7,6 @@ class Player
   char start;
   char button1;
   char button2;
-  int index;
   int side = 0;
   int row;
   int health = 3;
@@ -20,7 +19,6 @@ class Player
   color colour;
   boolean keyUp, keyDown, keyLeft, keyRight, butt;
   boolean alive = true;
-  PVector pos;
   PVector knee = new PVector(sizeX/4, sizeX *2, 0);
   PVector foot = new PVector(sizeX/4, sizeX * 2 + sizeX/2, 0);
 
@@ -284,7 +282,7 @@ class Player
       //points
       if (health > 0 && !songEnd)
       { 
-        points += moveSpeed * bonus;
+        points += 10 * bonus;
       }
       if (health < 1)
       {
@@ -493,7 +491,8 @@ void returnMainMenu()
   nameEntered = false;
   alphaCount = 0;
   name = "";
-  song.close();
-  
+  song.pause();
+  song.cue(0);
+  textSize(15);
 }
 

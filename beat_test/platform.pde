@@ -2,10 +2,8 @@ Platform platforms[] = new Platform[4];
 float moveSpeed = 0.5;
 int platNum = 0;
 
-class Platform
+class Platform extends GameObject
 {
-  PVector pos;
-  int index;
   float len;
   float pWidth = width/3.5;
   float pHeight = height/35;

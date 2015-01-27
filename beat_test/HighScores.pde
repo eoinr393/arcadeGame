@@ -79,13 +79,29 @@ void enterName()
     updateHighscore(); 
   }
   
-  textSize(20);
+  textAlign(CENTER);
   fill(0);
   rect(width/20, height/20, width - (height/20 * 2), height - (height/20 * 2));
   fill(255);
-  text("Player" + (bestPlayer + 1) + "name:", width/2, height/10);
-  text(name,width/2, height/5);
+  textSize(40);
+  text("New HighScore!", width/2, height/10);
+  
+  textSize(20);
+  text("Player" + (bestPlayer + 1) + "name:", width/2, height/2 - height/5 - height/10);
+  text(name,width/2,height/2 -  height/5);
+  text("_ _ _ _ _ _", width/2, height/5 + 2);
   text(alphabet[alphaCount], width/2,height/2);
+  text("button1 = insert  button2 = delete  start = save", width/2, height/2 + height/10);
+  
+  //arrows
+  line(width/2 - width/70, height/2 - height/30, width/2 - width/70, height/2);
+  line(width/2 - width/70, height/2 - height/30, width/2 - (width/70 * 2), height/2 - height/60);
+  line(width/2 - width/70, height/2, width/2 - (width/70 * 2), height/2 - height/60);
+  
+  line(width/2 + (width/70 * 2), height/2 - height/30, width/2 + (width/70 * 2), height/2);
+  line(width/2 + (width/70 * 2), height/2 - height/30, width/2 + (width/70 * 3), height/2 - height/60);
+  line(width/2 + (width/70 * 2), height/2, width/2 + (width/70 * 3), height/2 - height/60);
+  
   textSize(15);
 }
 

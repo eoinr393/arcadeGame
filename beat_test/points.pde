@@ -25,7 +25,7 @@ void UI()
     }
     //death message
     textAlign(LEFT);
-    fill(255, 0, 25,500);
+    fill(255, 0, 25, 500);
     if (players.get(i).alive == false)
     {
       textSize(15);
@@ -33,10 +33,11 @@ void UI()
       deathCount++;
     }
     //print the score and the multiplier
+    textSize(15);
     fill(0, 255, 0);
-    text("score:" + players.get(i).points , hX + (i * hGap), hY + sizeX * 1.2);
-    
-    text("X" + players.get(i).bonus , hX + (i * hGap) + , hY + sizeX * 1.2);
+    text("score:" + players.get(i).points, hX + (i * hGap), hY + sizeX/2 + 5);
+
+    text("X" + players.get(i).bonus, hX + (i * hGap), hY + sizeX/2 + 15 + 5);
     //if you finish the level
     if (songEnd && !gameOver)
     {
@@ -60,8 +61,12 @@ void UI()
     //if both players are dead
     if (!players.get(0).alive && !players.get(1).alive)
     {
-      textSize(15);
-      text("Game Over", width/2 - (6*15)/2, height/2); 
+      textSize(30);
+      textAlign(CENTER);
+      text("Game Over", width/2, height/2); 
+      textSize(20);
+      text("Button1 = Restart    Button2 = Main Menu", width/2 ,height/2 + height/10);
+      textAlign(LEFT);
       gameOver = true;
       textSize(12);
       if ((players.get(0).points > songs.get(menuCount).highScore) && players.get(0).points > players.get(1).points)

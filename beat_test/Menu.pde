@@ -1,4 +1,5 @@
 int menuCount = 0;
+int howToCount = 0;
 boolean menuUp, menuDown, menuButt1, menuButt2;
 
 void Menu()
@@ -31,7 +32,9 @@ void Menu()
   if (menuCount == 1 && checkKey(players.get(0).button1) && menuButt1)
   {
     menuButt1 = false;
-    instructions();
+    mainMenu = false;
+    howToPlay = true;
+    menuCount = 0;
   }
   if (menuCount == 2 && checkKey(players.get(0).button1) && menuButt1)
   {
@@ -44,6 +47,7 @@ void Menu()
   }
 
   textAlign(CENTER);
+  fill(255);
   textSize(15);
   if (menuCount == 0) textSize(30);
   text("Play", width/2, height/2);
@@ -54,8 +58,6 @@ void Menu()
   if (menuCount == 2) textSize(30);
   text("Exit", width/2, height/2 + (height/20 * 2));
   textSize(15);
-
-  text(menuCount, 50, 50);
 }
 
 void songSelect()
@@ -128,9 +130,30 @@ void songSelect()
   
 }
 
+
 void instructions()
 {
+  
+  image(howTo[howToCount],0,0,width,height);
+  
+  if((checkKey(players.get(0).button1) || checkKey(players.get(0).right)) && menuButt1)
+  {
+      howToCount++;
+      if(howToCount > 2)
+      {
+         howToPlay = false;
+         mainMenu = true; 
+         howToCount = 0;
+         menuButt1 = true;
+      }
+      menuButt1 = false;
+  }
+  if(!checkKey(players.get(0).button1) && !checkKey(players.get(0).right))
+  {
+     menuButt1 = true;
+  }
 }
+
 
 void exitGame()
 {

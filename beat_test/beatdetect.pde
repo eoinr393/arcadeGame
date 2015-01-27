@@ -63,13 +63,12 @@ void beatDetect()
    songEnd = !song.isPlaying(); 
    if(songEnd)
    {
-     stop();
+     stopSong();
    }  
 }
 
-void stop()
+void stopSong()
 {
-  song.close();
-  
-  minim.stop(); 
+ song.pause();
+ song.cue(0);
 }

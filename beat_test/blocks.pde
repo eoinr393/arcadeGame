@@ -1,8 +1,7 @@
 ArrayList<Block> blocks = new ArrayList<Block>();
 
-class Block
+class Block extends GameObject
 {
-  PVector pos;
   boolean hit = false;
   int platform;
   float sizeX = (platforms[0].pWidth / 4) - 5;

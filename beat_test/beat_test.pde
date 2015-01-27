@@ -17,7 +17,7 @@ boolean highScoreScreen = false;
 void setup()
 {
    size(700,500,P3D); 
-  frameRa 
+  frameRate(60); 
    //perform setups
    
    PlatformInit();

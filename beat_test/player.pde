@@ -458,9 +458,42 @@ void replay()
     players.get(i).row = 0 + (i*3);//int(((players.get(i).pos.x - (platforms[0].pos.x - platforms[0].pWidth/2)) / (platforms[0].pWidth / 4)));
     players.get(i).side = 0;
     players.get(i).alive = true;
+    players.get(i).theta = 0;
   }
   gameOver = false;
+  deathCount = 0;
   song.rewind();
 
+}
+
+void returnMainMenu()
+{
+  for (int i = 0; i < 2; i ++)
+  {
+    players.get(i).points = 0;
+    players.get(i).health = 3;
+    players.get(i).bonus = 1;
+    
+    players.get(i).pos.x = xRows[0 + (i*3)]; //((platforms[0].pos.x - (platforms[0].pWidth / 2)) + (2 * platforms[0].pWidth/4) + (platforms[0].pWidth/4)/2) + (i * gap);
+    players.get(i).pos.y = height - 85;
+    players.get(i).row = 0 + (i*3);//int(((players.get(i).pos.x - (platforms[0].pos.x - platforms[0].pWidth/2)) / (platforms[0].pWidth / 4)));
+    players.get(i).side = 0;
+    players.get(i).alive = true;
+    players.get(i).theta = 0;
+  }
+  gameOver = false;
+  mainMenu = true;
+  songSelection = false;
+  howToPlay = false;
+  songEnd = false;
+  menuCount = 0;
+  deathCount = 0;
+  highScoreScreen = false;
+  alphaLock = false;
+  nameEntered = false;
+  alphaCount = 0;
+  name = "";
+  song.close();
+  
 }
 

@@ -41,11 +41,15 @@ class Platform
       platNum--;
     }
 
-    if (gameOver)
+    if (gameOver || songEnd)
     {
       if (checkKey(players.get(0).button1))
       {
         replay();
+      }
+      if (checkKey(players.get(0).button2))
+      {
+        returnMainMenu();
       }
     }
   }

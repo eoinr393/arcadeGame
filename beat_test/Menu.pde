@@ -1,4 +1,3 @@
-
 int menuCount = 0;
 boolean menuUp, menuDown, menuButt1, menuButt2;
 
@@ -65,7 +64,15 @@ void songSelect()
   {
     textSize(15);
     if (menuCount == i) textSize(30);
-    text(songNames.get(i), width/2, height/2 + (i * height/20));
+    text(songs.get(i).name, width/2, (height/2 - height/4) + (i * height/15));
+    if(menuCount == i)
+    {
+      textSize(15);
+      fill(255,0,50);
+      text("highscore:" + songs.get(i).player + "-" + songs.get(i).highScore, width/2, (height/2 - height/4) + 20 + (i * height/15));
+      fill(255);
+    
+    }
   } 
 
   if (checkKey(players.get(0).down) && menuCount != songs.size() - 1 && menuDown)
@@ -88,7 +95,7 @@ void songSelect()
   }
   if (checkKey(players.get(0).button1) && menuButt1)
   {
-    song = songs.get(menuCount);
+    song = songs.get(menuCount).song;
     beat = new BeatDetect(song.bufferSize(), song.sampleRate());
     //set the sensitivity to 300 milliseconds 
     //after a beat has been detected the algorithm will wait for 300 miliseconds

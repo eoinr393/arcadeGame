@@ -18,7 +18,7 @@ PImage beatBlox;
 
 void setup()
 {
-  size(700, 500, P3D);  
+  size(1000,700 , P3D);  
   //perform setups
 
   PlatformInit();

@@ -1,6 +1,7 @@
 Platform platforms[] = new Platform[4];
 float moveSpeed = 0.5;
 int platNum = 0;
+boolean restartButt1 = false;
 
 class Platform extends GameObject
 {
@@ -38,17 +39,25 @@ class Platform extends GameObject
       displayed = false;  
       platNum--;
     }
+    if(!checkKey(players.get(0).button1) && !checkKey(players.get(1).button2))
+    {
+         restartButt1 = false; 
+    }
 
     if (gameOver || songEnd)
     {
-      if (checkKey(players.get(0).button1))
+      if (checkKey(players.get(0).button1) && restartButt1 == false)
       {
         replay();
       }
-      if (checkKey(players.get(0).button2))
+      if (checkKey(players.get(0).button2) && restartButt1 == false)
       {
         returnMainMenu();
       }
+    }
+    if( checkKey(players.get(0).button1) || checkKey(players.get(1).button2))
+    {
+     restartButt1 = true; 
     }
   }
 
